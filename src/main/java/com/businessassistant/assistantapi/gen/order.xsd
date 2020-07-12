@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.kepa.com/api/order"
+           xmlns:ns1="http://www.kepa.com/api/asset"
+           xmlns:ns2="http://www.kepa.com/api/client"
+           xmlns:ns3="http://www.kepa.com/api/order-details"
+           targetNamespace="http://www.kepa.com/api/order"
+>
+    <xs:import schemaLocation="asset.xsd"
+               namespace="http://www.kepa.com/api/asset" />
+    <xs:import schemaLocation="client.xsd"
+               namespace="http://www.kepa.com/api/client" />
+    <xs:import schemaLocation="order-details.xsd"
+               namespace="http://www.kepa.com/api/order-details" />
+
+
+
+    <xs:element name="getOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllOrdersRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllOrdersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="orders" type="tns:order" maxOccurs="unbounded"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postOrderRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="postOrderResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="changeStatusRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="changeStatusResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:order"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="order" >
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="client" type="ns2:client" />
+            <xs:element name="assets" type="ns1:asset" maxOccurs="unbounded"/>
+            <xs:element name="orderDetails" type="ns3:orderDetails"/>
+            <xs:element name="orderStatus" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

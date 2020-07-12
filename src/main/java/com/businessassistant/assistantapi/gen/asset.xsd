@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.kepa.com/api/asset"
+           xmlns:ns1="http://www.kepa.com/api/order"
+           targetNamespace="http://www.kepa.com/api/asset"
+
+>
+
+    <xs:import schemaLocation="order.xsd"
+               namespace="http://www.kepa.com/api/order" />
+
+    <xs:element name="getAssetRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAssetResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="asset" type="tns:asset"/>
+                <xs:element name="serviceStatus" type="ns1:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllAssetsRequest">
+        <xs:complexType/>
+    </xs:element>
+
+    <xs:element name="getAllAssetsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="assets" type="tns:asset" maxOccurs="unbounded"/>
+                <xs:element name="serviceStatus" type="ns1:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="asset" >
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="brand" type="xs:string"/>
+            <xs:element name="category" type="xs:string"/>
+            <xs:element name="price" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="stock" type="xs:integer"/>
+            <xs:element name="imgUrl" type="xs:string"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

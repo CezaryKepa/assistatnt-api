@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.kepa.com/api/client"
+           xmlns:ns1="http://www.kepa.com/api/order"
+           targetNamespace="http://www.kepa.com/api/client"
+>
+    <xs:import schemaLocation="order.xsd"
+               namespace="http://www.kepa.com/api/order" />
+
+    <xs:element name="getClientRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getClientResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order" type="tns:client"/>
+                <xs:element name="serviceStatus" type="ns1:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="client" >
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="firstname" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="email" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+</xs:schema>
