@@ -2,6 +2,7 @@ package com.businessassistant.assistantapi.order;
 
 import com.businessassistant.assistantapi.asset.Asset;
 import com.businessassistant.assistantapi.client.Client;
+import com.businessassistant.assistantapi.order_details.OrderDetails;
 import lombok.Getter;
 import lombok.Setter;
 

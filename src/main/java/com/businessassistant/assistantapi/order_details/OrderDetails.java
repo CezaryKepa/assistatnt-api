@@ -1,4 +1,4 @@
-package com.businessassistant.assistantapi.order;
+package com.businessassistant.assistantapi.order_details;
 
 import lombok.Getter;
 import lombok.Setter;
