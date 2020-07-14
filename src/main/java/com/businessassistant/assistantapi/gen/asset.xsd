@@ -44,6 +44,7 @@
             <xs:element name="id" type="xs:long"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="brand" type="xs:string"/>
+            <xs:element name="serialNumber" type="xs:string"/>
             <xs:element name="category" type="xs:string"/>
             <xs:element name="price" type="xs:string"/>
             <xs:element name="description" type="xs:string"/>

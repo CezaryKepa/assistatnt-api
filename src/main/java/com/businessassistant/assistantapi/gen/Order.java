@@ -121,10 +121,6 @@ public class Order {
         return this.assets;
     }
 
-    public void setAssets(List<Asset> assets) {
-        this.assets = assets;
-    }
-
     /**
      * Gets the value of the orderDetails property.
      * 

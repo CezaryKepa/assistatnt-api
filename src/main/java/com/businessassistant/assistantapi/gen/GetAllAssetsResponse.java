@@ -72,10 +72,6 @@ public class GetAllAssetsResponse {
         return this.assets;
     }
 
-    public void setAssets(List<Asset> assets) {
-        this.assets = assets;
-    }
-
     /**
      * Gets the value of the serviceStatus property.
      * 

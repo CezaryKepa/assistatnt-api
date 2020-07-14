@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="brand" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="serialNumber" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="category" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="price" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
@@ -39,6 +40,7 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "name",
     "brand",
+    "serialNumber",
     "category",
     "price",
     "description",
@@ -52,6 +54,8 @@ public class Asset {
     protected String name;
     @XmlElement(required = true)
     protected String brand;
+    @XmlElement(required = true)
+    protected String serialNumber;
     @XmlElement(required = true)
     protected String category;
     @XmlElement(required = true)
@@ -125,6 +129,30 @@ public class Asset {
      */
     public void setBrand(String value) {
         this.brand = value;
+    }
+
+    /**
+     * Gets the value of the serialNumber property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    /**
+     * Sets the value of the serialNumber property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSerialNumber(String value) {
+        this.serialNumber = value;
     }
 
     /**

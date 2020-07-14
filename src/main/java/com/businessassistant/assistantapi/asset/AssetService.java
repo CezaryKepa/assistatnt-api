@@ -1,6 +1,5 @@
 package com.businessassistant.assistantapi.asset;
 
-import com.businessassistant.assistantapi.gen.Asset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +17,18 @@ public class AssetService {
         this.assetRepository = assetRepository;
     }
 
-    public List<Asset> findAll() {
+    public List<com.businessassistant.assistantapi.gen.Asset> findAll() {
         return assetRepository.findAll()
                 .stream()
                 .map(AssetMapper::toDto)
                 .collect(Collectors.toList());
     }
-    public Optional<Asset> findById(Long id) {
+    public Optional<com.businessassistant.assistantapi.gen.Asset> findById(Long id) {
         return assetRepository.findById(id).map(AssetMapper::toDto);
+    }
+
+    //TODO:check for duplicates
+    public List<Asset> saveAll(List<Asset> assets) {
+        return saveAll(assets);
     }
 }

@@ -14,6 +14,7 @@ public class Asset {
     private Long id;
     private String name;
     private String brand;
+    private String serialNumber;
     @Enumerated(EnumType.STRING)
     private AssetCategory category;
     private Double price;

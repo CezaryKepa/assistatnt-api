@@ -2,12 +2,13 @@ package com.businessassistant.assistantapi.order;
 
 
 import com.businessassistant.assistantapi.asset.Asset;
-import com.businessassistant.assistantapi.asset.AssetRepository;
+import com.businessassistant.assistantapi.asset.AssetService;
 import com.businessassistant.assistantapi.client.Client;
-import com.businessassistant.assistantapi.client.ClientRepository;
+import com.businessassistant.assistantapi.client.ClientService;
 import com.businessassistant.assistantapi.exception.ServiceFaultException;
 import com.businessassistant.assistantapi.gen.Order;
 import com.businessassistant.assistantapi.gen.ServiceStatus;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,14 @@ import java.util.stream.Collectors;
 @Service
 public class OrderService {
     private OrderRepository orderRepository;
-    private AssetRepository assetRepository;
-    private ClientRepository clientRepository;
+    private AssetService assetService;
+    private ClientService clientService;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, AssetRepository assetRepository, ClientRepository clientRepository) {
+    public OrderService(OrderRepository orderRepository, AssetService assetService, ClientService clientService) {
         this.orderRepository = orderRepository;
-        this.assetRepository = assetRepository;
-        this.clientRepository = clientRepository;
+        this.assetService = assetService;
+        this.clientService = clientService;
     }
 
     List<Order> findAll() {
@@ -45,8 +46,8 @@ public class OrderService {
     public Order save(Order order){
         com.businessassistant.assistantapi.order.Order entity = OrderMapper.toEntity(order);
         //TODO:add serial numbers to asset
-        List<Asset> assets = assetRepository.saveAll(entity.getAssets());
-        Client save = clientRepository.save(entity.getClient());
+        List<Asset> assets = assetService.saveAll(entity.getAssets());
+        Client save = clientService.save(entity.getClient());
         entity.setAssets(assets);
         entity.setClient(save);
 
