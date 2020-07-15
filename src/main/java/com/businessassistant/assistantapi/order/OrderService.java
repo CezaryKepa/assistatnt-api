@@ -9,6 +9,8 @@ import com.businessassistant.assistantapi.exception.ServiceFaultException;
 import com.businessassistant.assistantapi.gen.Order;
 import com.businessassistant.assistantapi.gen.ServiceStatus;
 
+import com.businessassistant.assistantapi.order_details.OrderDetails;
+import com.businessassistant.assistantapi.order_details.OrderDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +23,14 @@ public class OrderService {
     private OrderRepository orderRepository;
     private AssetService assetService;
     private ClientService clientService;
+    private OrderDetailsRepository orderDetailsRepository;
 
     @Autowired
-    public OrderService(OrderRepository orderRepository, AssetService assetService, ClientService clientService) {
+    public OrderService(OrderRepository orderRepository, AssetService assetService, ClientService clientService, OrderDetailsRepository orderDetailsRepository) {
         this.orderRepository = orderRepository;
         this.assetService = assetService;
         this.clientService = clientService;
+        this.orderDetailsRepository = orderDetailsRepository;
     }
 
     List<Order> findAll() {
@@ -39,17 +43,17 @@ public class OrderService {
         return orderRepository.findById(id).map(OrderMapper::toDto);
     }
 
-    /*
-        TODO: Instead of using repositories inject services that also check for duplicates
-     */
 
     public Order save(Order order){
         com.businessassistant.assistantapi.order.Order entity = OrderMapper.toEntity(order);
-        //TODO:add serial numbers to asset
+
         List<Asset> assets = assetService.saveAll(entity.getAssets());
         Client save = clientService.save(entity.getClient());
+        OrderDetails orderDetails = orderDetailsRepository.save(entity.getOrderDetails());
+
         entity.setAssets(assets);
         entity.setClient(save);
+        entity.setOrderDetails(orderDetails);
 
         orderRepository.save(entity);
         return order;

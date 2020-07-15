@@ -23,12 +23,14 @@ public class ClientService {
 
     public Client save(Client client) {
         Optional<Client> clientByEmail = clientRepository.findByEmail(client.getEmail());
-        ServiceStatus serviceStatus = new ServiceStatus();
+
         if(clientByEmail.isPresent()){
+            ServiceStatus serviceStatus = new ServiceStatus();
             serviceStatus.setStatusCode("409");
             serviceStatus.setMessage("There already is client with this e-mail");
             throw new ServiceFaultException("Conflict",serviceStatus);
         }
-        return save(client);
+
+        return clientRepository.save(client);
     }
 }

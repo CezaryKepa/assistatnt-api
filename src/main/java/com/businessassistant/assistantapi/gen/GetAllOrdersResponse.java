@@ -72,6 +72,10 @@ public class GetAllOrdersResponse {
         return this.orders;
     }
 
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     /**
      * Gets the value of the serviceStatus property.
      * 

@@ -1,6 +1,6 @@
-insert into asset(id,name, brand, category, price, description, stock, img_url)values
-    (1, 'odkurzacz', 'Bosh', 'CATEGORY1', 200.12, 'test', 3, null),
-    (2, 'telewizor', 'Samsung', 'CATEGORY2', 1200.12, 'test', 6, null);
+insert into asset(id,name, serial_number, brand, category, price, description, stock, img_url)values
+    (1, 'odkurzacz', '2155612512512','Bosh', 'CATEGORY1', 200.12, 'test', 3, null),
+    (2, 'telewizor',  '638126091286018', 'Samsung', 'CATEGORY2', 1200.12, 'test', 6, null);
 insert into client(id, firstname, surname, email)values
     (1, 'Jan', 'Kowalski', 'test@gmail.com'),
     (2, 'Piotr', 'Nowak', 'test2@gmail.com');
