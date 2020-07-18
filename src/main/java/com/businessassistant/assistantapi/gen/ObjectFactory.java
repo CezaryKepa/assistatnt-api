@@ -30,19 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ChangeStatusRequest }
+     * Create an instance of {@link DeleteOrderResponse }
      * 
      */
-    public ChangeStatusRequest createChangeStatusRequest() {
-        return new ChangeStatusRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetAllOrdersResponse }
-     * 
-     */
-    public GetAllOrdersResponse createGetAllOrdersResponse() {
-        return new GetAllOrdersResponse();
+    public DeleteOrderResponse createDeleteOrderResponse() {
+        return new DeleteOrderResponse();
     }
 
     /**
@@ -59,6 +51,22 @@ public class ObjectFactory {
      */
     public ServiceStatus createServiceStatus() {
         return new ServiceStatus();
+    }
+
+    /**
+     * Create an instance of {@link ChangeStatusRequest }
+     * 
+     */
+    public ChangeStatusRequest createChangeStatusRequest() {
+        return new ChangeStatusRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetAllOrdersResponse }
+     * 
+     */
+    public GetAllOrdersResponse createGetAllOrdersResponse() {
+        return new GetAllOrdersResponse();
     }
 
     /**
@@ -107,6 +115,14 @@ public class ObjectFactory {
      */
     public GetAllOrdersRequest createGetAllOrdersRequest() {
         return new GetAllOrdersRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteOrderRequest }
+     * 
+     */
+    public DeleteOrderRequest createDeleteOrderRequest() {
+        return new DeleteOrderRequest();
     }
 
     /**

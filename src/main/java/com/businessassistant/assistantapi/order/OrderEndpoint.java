@@ -56,14 +56,35 @@ public class OrderEndpoint {
     @PayloadRoot(namespace = "http://www.kepa.com/api/order", localPart = "postOrderRequest")
     @ResponsePayload
     public PostOrderResponse save(@RequestPayload PostOrderRequest postOrderRequest){
-
+        ServiceStatus serviceStatus = new ServiceStatus();
         Order saved = orderService.save(postOrderRequest.getOrder());
+
         PostOrderResponse postOrderResponse = new PostOrderResponse();
         postOrderResponse.setOrder(saved);
-        //TODO
-        //postOrderResponse.setServiceStatus();
+
+        serviceStatus.setStatusCode("201");
+        serviceStatus.setMessage("Order was created");
+
+        postOrderResponse.setServiceStatus(serviceStatus);
         return postOrderResponse;
     }
+
+    @PayloadRoot(namespace = "http://www.kepa.com/api/order", localPart = "deleteOrderRequest")
+    @ResponsePayload
+    public DeleteOrderResponse delete(@RequestPayload DeleteOrderRequest deleteOrderRequest){
+        ServiceStatus serviceStatus = new ServiceStatus();
+        Order saved = orderService.delete(deleteOrderRequest.getId());
+
+        DeleteOrderResponse deleteOrderResponse = new DeleteOrderResponse();
+        deleteOrderResponse.setOrder(saved);
+
+        serviceStatus.setStatusCode("200");
+        serviceStatus.setMessage("Order was deleted");
+
+        deleteOrderResponse.setServiceStatus(serviceStatus);
+        return deleteOrderResponse;
+    }
+
     @PayloadRoot(namespace = "http://www.kepa.com/api/order", localPart = "changeStatusRequest")
     @ResponsePayload
     public ChangeStatusResponse changeStatus(@RequestPayload ChangeStatusRequest changeStatusRequest){

@@ -26,7 +26,7 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "asset_id", referencedColumnName = "id")
     )
     private List<Asset> assets = new ArrayList<>();
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private OrderDetails orderDetails;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
