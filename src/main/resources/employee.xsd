@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://www.kepa.com/api/employee"
+           xmlns:ns1="http://www.kepa.com/api/asset"
+           xmlns:ns2="http://www.kepa.com/api/client"
+           xmlns:ns3="http://www.kepa.com/api/order-details"
+           targetNamespace="http://www.kepa.com/api/employee"
+>
+    <xs:import schemaLocation="asset.xsd"
+               namespace="http://www.kepa.com/api/asset" />
+    <xs:import schemaLocation="client.xsd"
+               namespace="http://www.kepa.com/api/client" />
+    <xs:import schemaLocation="order-details.xsd"
+               namespace="http://www.kepa.com/api/order-details" />
+
+
+
+    <xs:element name="getEmployeeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getEmployeeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="tns:employee"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllEmployeesRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllEmployeesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employees" type="tns:employee" maxOccurs="unbounded"/>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <xs:complexType name="employee" >
+        <xs:sequence>
+            <xs:element name="id" type="xs:long"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="surname" type="xs:string"/>
+            <xs:element name="position" type="xs:string"/>
+<!--TODO other fields-->
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="statusCode" type="xs:string"/>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
