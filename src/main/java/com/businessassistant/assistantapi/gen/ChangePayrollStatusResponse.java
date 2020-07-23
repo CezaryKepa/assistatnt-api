@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="client" type="{http://www.kepa.com/api/client}client"/>
+ *         &lt;element name="isOnPayroll" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="serviceStatus" type="{http://www.kepa.com/api/order}serviceStatus"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -30,41 +30,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "client",
+    "isOnPayroll",
     "serviceStatus"
 })
-@XmlRootElement(name = "getClientResponse", namespace = "http://www.kepa.com/api/client")
-public class GetClientResponse {
+@XmlRootElement(name = "changePayrollStatusResponse", namespace = "http://www.kepa.com/api/employee")
+public class ChangePayrollStatusResponse {
 
-    @XmlElement(required = true)
-    protected Client client;
+    protected boolean isOnPayroll;
     @XmlElement(required = true)
     protected ServiceStatus serviceStatus;
 
-
-
     /**
-     * Gets the value of the client property.
+     * Gets the value of the isOnPayroll property.
      * 
-     * @return
-     *     possible object is
-     *     {@link Client }
-     *     
      */
-    public Client getClient() {
-        return client;
+    public boolean isIsOnPayroll() {
+        return isOnPayroll;
     }
 
     /**
-     * Sets the value of the client property.
+     * Sets the value of the isOnPayroll property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link Client }
-     *     
      */
-    public void setClient(Client value) {
-        this.client = value;
+    public void setIsOnPayroll(boolean value) {
+        this.isOnPayroll = value;
     }
 
     /**

@@ -215,6 +215,7 @@ public class Asset {
         return description;
     }
 
+
     /**
      * Sets the value of the description property.
      * 

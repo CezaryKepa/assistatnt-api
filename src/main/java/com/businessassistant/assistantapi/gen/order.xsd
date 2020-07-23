@@ -4,6 +4,7 @@
            xmlns:ns1="http://www.kepa.com/api/asset"
            xmlns:ns2="http://www.kepa.com/api/client"
            xmlns:ns3="http://www.kepa.com/api/order-details"
+           xmlns:ns4="http://www.kepa.com/api/employee"
            targetNamespace="http://www.kepa.com/api/order"
 >
     <xs:import schemaLocation="asset.xsd"
@@ -12,7 +13,8 @@
                namespace="http://www.kepa.com/api/client" />
     <xs:import schemaLocation="order-details.xsd"
                namespace="http://www.kepa.com/api/order-details" />
-
+    <xs:import schemaLocation="employee.xsd"
+               namespace="http://www.kepa.com/api/employee" />
 
 
     <xs:element name="getOrderRequest">
@@ -105,6 +107,7 @@
             <xs:element name="assets" type="ns1:asset" maxOccurs="unbounded"/>
             <xs:element name="orderDetails" type="ns3:orderDetails"/>
             <xs:element name="orderStatus" type="xs:string"/>
+            <xs:element name="employee" type="ns4:employee" />
         </xs:sequence>
     </xs:complexType>
 

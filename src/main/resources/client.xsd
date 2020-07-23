@@ -18,7 +18,7 @@
     <xs:element name="getClientResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="order" type="tns:client"/>
+                <xs:element name="client" type="tns:client"/>
                 <xs:element name="serviceStatus" type="ns1:serviceStatus"/>
             </xs:sequence>
         </xs:complexType>

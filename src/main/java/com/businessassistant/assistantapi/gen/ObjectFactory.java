@@ -213,4 +213,68 @@ public class ObjectFactory {
         return new OrderDetails();
     }
 
+    /**
+     * Create an instance of {@link ChangePayrollStatus }
+     * 
+     */
+    public ChangePayrollStatus createChangePayrollStatus() {
+        return new ChangePayrollStatus();
+    }
+
+    /**
+     * Create an instance of {@link GetAllEmployeesRequest }
+     * 
+     */
+    public GetAllEmployeesRequest createGetAllEmployeesRequest() {
+        return new GetAllEmployeesRequest();
+    }
+
+    /**
+     * Create an instance of {@link ChangePayrollStatusResponse }
+     * 
+     */
+    public ChangePayrollStatusResponse createChangePayrollStatusResponse() {
+        return new ChangePayrollStatusResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetAllEmployeesResponse }
+     * 
+     */
+    public GetAllEmployeesResponse createGetAllEmployeesResponse() {
+        return new GetAllEmployeesResponse();
+    }
+
+    /**
+     * Create an instance of {@link Employee }
+     * 
+     */
+    public Employee createEmployee() {
+        return new Employee();
+    }
+
+    /**
+     * Create an instance of {@link GetEmployeeRequest }
+     * 
+     */
+    public GetEmployeeRequest createGetEmployeeRequest() {
+        return new GetEmployeeRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetEmployeeResponse }
+     * 
+     */
+    public GetEmployeeResponse createGetEmployeeResponse() {
+        return new GetEmployeeResponse();
+    }
+
+    /**
+     * Create an instance of {@link Position }
+     * 
+     */
+    public Position createPosition() {
+        return new Position();
+    }
+
 }

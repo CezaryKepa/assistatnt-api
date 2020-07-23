@@ -2,6 +2,7 @@ package com.businessassistant.assistantapi.order;
 
 import com.businessassistant.assistantapi.asset.Asset;
 import com.businessassistant.assistantapi.client.Client;
+import com.businessassistant.assistantapi.employee.Employee;
 import com.businessassistant.assistantapi.order_details.OrderDetails;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +19,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "client_id")
     private Client client;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "order_assets",
@@ -30,4 +30,6 @@ public class Order {
     private OrderDetails orderDetails;
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+    @ManyToOne
+    private Employee employee;
 }

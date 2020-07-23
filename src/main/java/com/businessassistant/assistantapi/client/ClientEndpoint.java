@@ -37,7 +37,7 @@ public class ClientEndpoint {
         Client payload = client.get();
         serviceStatus.setStatusCode("200");
         serviceStatus.setMessage("OK");
-        getClientResponse.setOrder(payload);
+        getClientResponse.setClient(payload);
         getClientResponse.setServiceStatus(serviceStatus);
 
         return getClientResponse;

@@ -24,6 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="assets" type="{http://www.kepa.com/api/asset}asset" maxOccurs="unbounded"/>
  *         &lt;element name="orderDetails" type="{http://www.kepa.com/api/order-details}orderDetails"/>
  *         &lt;element name="orderStatus" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="employee" type="{http://www.kepa.com/api/employee}employee"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -38,7 +39,8 @@ import javax.xml.bind.annotation.XmlType;
     "client",
     "assets",
     "orderDetails",
-    "orderStatus"
+    "orderStatus",
+    "employee"
 })
 public class Order {
 
@@ -51,6 +53,12 @@ public class Order {
     protected OrderDetails orderDetails;
     @XmlElement(required = true)
     protected String orderStatus;
+    @XmlElement(required = true)
+    protected Employee employee;
+
+    public void setAssets(List<Asset> assets) {
+        this.assets = assets;
+    }
 
     /**
      * Gets the value of the id property.
@@ -121,10 +129,6 @@ public class Order {
         return this.assets;
     }
 
-    public void setAssets(List<Asset> assets) {
-        this.assets = assets;
-    }
-
     /**
      * Gets the value of the orderDetails property.
      * 
@@ -171,6 +175,30 @@ public class Order {
      */
     public void setOrderStatus(String value) {
         this.orderStatus = value;
+    }
+
+    /**
+     * Gets the value of the employee property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Employee }
+     *     
+     */
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    /**
+     * Sets the value of the employee property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Employee }
+     *     
+     */
+    public void setEmployee(Employee value) {
+        this.employee = value;
     }
 
 }
