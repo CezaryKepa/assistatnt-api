@@ -8,11 +8,18 @@ insert into client(id, firstname, surname, email)values
 insert into order_details(id,street, house_number, city, zip,country,telephone)values
     (1, 'Slowackiego', '20', 'Radzyn Podlaski', '21-300', 'Polska', '215215125');
 
-    insert into ordert(id, client_id, order_details_id, status )values
-(1, 2 ,1 ,'NEW');
+insert into position (id,position_name,hourly_wage)values
+    (1,'PACKER',43.2);
 
+insert into position (id,position_name,hourly_wage)values
+    (2,'MANAGER',63.2);
+
+insert into employee(id, name,surname,position_id,hours_worked,is_on_payroll)values
+(1,'Cezary','Kępa',1,22,true);
+
+insert into ordert(id, client_id, order_details_id, status,employee_id )values
+(1, 2 ,1 ,'NEW',1);
 
 
 insert into order_assets(order_id, asset_id)values
     (1,2);
-

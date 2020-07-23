@@ -60,6 +60,7 @@ public class Employee {
     protected BigInteger hoursWorked;
     protected boolean isOnPayroll;
 
+
     /**
      * Gets the value of the id property.
      * 
@@ -86,6 +87,18 @@ public class Employee {
      */
     public String getName() {
         return name;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public boolean isOnPayroll() {
+        return isOnPayroll;
+    }
+
+    public void setOnPayroll(boolean onPayroll) {
+        isOnPayroll = onPayroll;
     }
 
     /**

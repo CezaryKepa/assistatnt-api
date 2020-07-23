@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class OrderMapper {
 
-     static com.businessassistant.assistantapi.gen.Order toDto(Order order) {
+     public static com.businessassistant.assistantapi.gen.Order toDto(Order order) {
         com.businessassistant.assistantapi.gen.Order dto = new com.businessassistant.assistantapi.gen.Order();
         dto.setId(order.getId());
         dto.setClient(ClientMapper.toDto(order.getClient()));

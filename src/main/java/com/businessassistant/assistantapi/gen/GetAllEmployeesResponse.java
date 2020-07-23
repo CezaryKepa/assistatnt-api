@@ -72,6 +72,10 @@ public class GetAllEmployeesResponse {
         return this.employees;
     }
 
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     /**
      * Gets the value of the serviceStatus property.
      * 

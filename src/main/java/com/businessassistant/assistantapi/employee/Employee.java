@@ -20,7 +20,7 @@ public class Employee {
     private String surname;
     @ManyToOne
     private Position position;
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
     private Integer hoursWorked;
     private Boolean isOnPayroll;
