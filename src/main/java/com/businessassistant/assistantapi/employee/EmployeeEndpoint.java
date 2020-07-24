@@ -59,21 +59,13 @@ public class EmployeeEndpoint {
     @ResponsePayload
     public ChangePayrollStatusResponse changePayrollStatus(@RequestPayload ChangePayrollStatus changePayrollStatus){
 
-        Optional<Employee> employee = employeeService.changePayrollStatus(changePayrollStatus.getId());
+        Employee employee = employeeService.changePayrollStatus(changePayrollStatus.getId());
         ServiceStatus serviceStatus = new ServiceStatus();
         ChangePayrollStatusResponse changePayrollStatusResponse = new ChangePayrollStatusResponse();
 
-        //TODO extract methods
-        if (!employee.isPresent()) {
-            serviceStatus.setStatusCode("404");
-            serviceStatus.setMessage("No employee with this id");
-            throw new ServiceFaultException("Not Found", serviceStatus);
-        }
-
-        Employee payload = employee.get();
         serviceStatus.setStatusCode("200");
         serviceStatus.setMessage("OK");
-        changePayrollStatusResponse.setIsOnPayroll(payload.isIsOnPayroll());
+        changePayrollStatusResponse.setIsOnPayroll(employee.isIsOnPayroll());
         changePayrollStatusResponse.setServiceStatus(serviceStatus);
 
         return changePayrollStatusResponse;

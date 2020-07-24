@@ -60,12 +60,11 @@ public class OrderService {
 
     public Order changeStatus(long id) {
         Optional<com.businessassistant.assistantapi.order.Order> orderById = orderRepository.findById(id);
-        ServiceStatus serviceStatus = new ServiceStatus();
+
         if(!orderById.isPresent()){
-            serviceStatus.setStatusCode("404");
-            serviceStatus.setMessage("No order with this id");
-            throw new ServiceFaultException("Not Found",serviceStatus);
+            throwOrderNotFoundException();
         }
+
         com.businessassistant.assistantapi.order.Order order = orderById.get();
         order.setStatus(OrderStatus.nextStatus(order.getStatus()));
         orderRepository.save(order);
@@ -74,15 +73,20 @@ public class OrderService {
 
     public Order delete(long id) {
         Optional<com.businessassistant.assistantapi.order.Order> orderById = orderRepository.findById(id);
-        ServiceStatus serviceStatus = new ServiceStatus();
+
         if(!orderById.isPresent()){
-            serviceStatus.setStatusCode("404");
-            serviceStatus.setMessage("No order with this id");
-            throw new ServiceFaultException("Not Found",serviceStatus);
+          throwOrderNotFoundException();
         }
 
         com.businessassistant.assistantapi.order.Order order = orderById.get();
         orderRepository.delete(order);
         return OrderMapper.toDto(order);
+    }
+
+    private void throwOrderNotFoundException(){
+        ServiceStatus serviceStatus = new ServiceStatus();
+        serviceStatus.setStatusCode("404");
+        serviceStatus.setMessage("No order with this id");
+        throw new ServiceFaultException("Not Found",serviceStatus);
     }
 }
